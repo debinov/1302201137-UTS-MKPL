@@ -7,10 +7,10 @@ import java.util.List;
 public class Employee {
 
 	private String idNumber;
-	private int yearJoined;
-	private int monthJoined;
 	private int monthWorkingInYear;
 	
+	private LocalDate tglJoin; 
+
 	private boolean isForeigner;	
 	private int monthlySalary;
 	private int otherMonthlyIncome;
@@ -20,12 +20,11 @@ public class Employee {
 	private List<String> childNames;
 	private List<String> childIdNumbers;
 	
-	public Employee( String idNumber, int yearJoined, int monthJoined, boolean isForeigner) {
+	public Employee( String idNumber, LocalDate tglJoin, boolean isForeigner) {
 	
 		this.idNumber = idNumber;
 		
-		this.yearJoined = yearJoined;
-		this.monthJoined = monthJoined;
+		this.tglJoin = tglJoin;
 		this.isForeigner = isForeigner;
 		
 		
@@ -73,8 +72,8 @@ public class Employee {
 		
 		LocalDate date = LocalDate.now();
 		
-		if (date.getYear() == yearJoined) {
-			monthWorkingInYear = date.getMonthValue() - monthJoined;
+		if (date.getYear() == tglJoin.getYear()) {
+			monthWorkingInYear = date.getMonthValue() - tglJoin.getMonthValue();
 		}else {
 			monthWorkingInYear = 12;
 		}
